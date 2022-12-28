@@ -1,0 +1,104 @@
+﻿@model RafflesUserViewModel
+<ul class="tiles">
+    @{
+        if (Model.User != null)
+        {
+            if (Context.Session.GetInt32("userId") != null)
+            {
+                //if (Model.User.Admin)
+                {
+                    <li class="raffle" style="cursor: pointer;" onclick="location.href='@Url.Action("CreateRaffle", "RaffleList")'"> <img class="cr-img" src="~/img/create-new.png">  <div class="add-new-raffle">Добавить</div> </li>
+                }
+            }
+        }
+
+
+        foreach (Raffle raffle in Model.Raffles)
+        {
+            //<li class="raffle" style="cursor: pointer;" onclick="window.location='RaffleList/ShowRafflePage/?id=@raffle.Id'">
+            <div class="link-container">
+                <div class="raffle" asp-controller="RaffleList" asp-action="ShowRafflePage" asp-route-id="@raffle.Id">
+                    <a class="link" asp-controller="RaffleList" asp-action="ShowRafflePage" asp-route-id="@raffle.Id"></a>
+                    <!--<li @*class="raffle"*@ style="cursor: pointer;">-->
+                    @*<div>*@
+                    <h3>@raffle.Title</h3>
+                    @if (raffle.Expired)
+                    {
+                        <div class="sdescription"><i>Завершен</i></div>
+                    }
+                    else
+                    {
+                        <div class="sdescription"><i>@raffle.ExpirationTime.ToString("dd.MM.yyyy HH:mm")</i></div> <!-- Время -->
+                    }
+
+                    @if (raffle.Description != null)
+                    {
+                        @if (raffle.Description.Length > 128)
+                        {
+                            <div class="first">@raffle.Description.Substring(0, 128)...</div> <!-- Краткое описание -->
+
+                        }
+                        else
+                        {
+                            <div class="first">@raffle.Description</div>
+                        }
+                    }
+
+                    <div class="sdescription">Количество призов - @raffle.Places:</div> <!-- Призы/места -->
+                    @for (int i = 0; i < 3 && i < raffle.Places; ++i)
+                    {
+                        <div class="sprizes">@Model.Prizes.Where(c => c.RaffleId == raffle.Id).ToArray()[i].Place - @Model.Prizes.Where(c => c.RaffleId == raffle.Id).ToArray()[i].PrizeDescription</div>
+                    }
+                    @if (raffle.Places > 3)
+                    {
+                        <div class="sprizes">...</div>
+                    }
+
+                    <!--Кнопки-->
+                    @if (Model.User != null && Context.Session.GetInt32("userId") != null)
+                    {
+                        <div class="inner-container">
+                            <div class="buttons-container">
+                                @if (!raffle.Expired)
+                                {
+                                    @if (Model.UserRaffles.Contains<int>(raffle.Id))
+                                    {
+                                        <div class="button1"><!--<a asp-controller="RaffleList" asp-action="EditRaffleTile" asp-route-id="@raffle.Id">--><img class="control-imgs-active" src="~/img/check-mark-rect.png" title="Учавствовать"><!--</a>--></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="button1"><!--<a asp-controller="RaffleList" asp-action="EditRaffleTile" asp-route-id="@raffle.Id">--><img id="checkMark-@raffle.Id" class="control-imgs" src="~/img/check-mark-rect.png" title="Учавствовать" onclick="Participate(@raffle.Id);"><!--</a>--></div>
+
+                                    }
+                                    @if (Model.User.Admin || Context.Session.GetInt32("userId") == raffle.AuthorId)
+                                    {
+                                        <div class="button1"><a asp-controller="RaffleList" asp-action="EditRaffleTile" asp-route-id="@raffle.Id"><img class="control-imgs" src="~/img/edit.png" title="Редактировать"></a></div>
+                                    }
+                                }
+                                @if (Model.User.Admin || Context.Session.GetInt32("userId") == raffle.AuthorId)
+                                {
+                                    <div class="button1"><a asp-controller="RaffleList" asp-action="DeleteRaffleTile" asp-route-id="@raffle.Id"><img class="control-imgs" src="~/img/delete-icon-rect.png" title="Удалить"></a></div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+</ul>
+
+<script>
+
+    function Participate(id) {
+        //document.getElementById("checkMark").style.filter = "invert(50%) sepia(50%) saturate(1315%) hue-rotate(317deg) brightness(85%) contrast(118%)";
+        document.getElementById("checkMark-"+id).className = "control-imgs-active";
+        $.ajax({
+            url: "/RaffleList/Participate",
+            type: "POST",
+            data: {raffleId: id}
+        });
+    }
+
+</script>
+

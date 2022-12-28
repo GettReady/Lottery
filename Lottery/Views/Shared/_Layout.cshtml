@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css">
+    <link href="~/css/RafflePage.css" rel="stylesheet" type="text/css">
+    <link href="~/css/TileLinkContainer.css" rel="stylesheet" type="text/css">
+    <script src="/js/jquery-3.6.0.js"></script>        
+
+</head>
+<body>
+    <!--<header>
+
+    </header>
+        -->
+
+    <div class="header">
+        <a href="@Url.Action("ShowRaffles", "RaffleList")" class="logo"><i> ЛОТЕРЕЯ  </i></a>
+        <div href="#default" class="options">
+            @if (ViewBag.Title != null)
+            {
+                @if (ViewBag.Title.Contains("Все"))
+                {
+                    <a class="optionActive" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
+                    <a class="option" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
+                    if (Context.Session.GetInt32("userId") != null)
+                    {
+                        <a class="option" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
+                    }
+
+                }
+                else if (ViewBag.Title.Contains("Активные"))
+                {
+                    <a class="option" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
+                    <a class="optionActive" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
+                    if (Context.Session.GetInt32("userId") != null)
+                    {
+                        <a class="option" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
+                    }
+                }
+                else if (ViewBag.Title.Contains("Мои"))
+                {
+                    <a class="option" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
+                    <a class="option" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
+                    if (Context.Session.GetInt32("userId") != null)
+                    {
+                        <a class="optionActive" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
+                    }
+                }
+                else 
+                {
+                    <a class="option" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
+                    <a class="option" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
+                    if (Context.Session.GetInt32("userId") != null)
+                    {
+                        <a class="option" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
+                    }
+                }
+
+            }
+            else
+            {
+                <a class="option" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
+                <a class="option" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
+                if (Context.Session.GetInt32("userId") != null)
+                {
+                    <a class="option" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
+                }
+            }
+        </div>
+
+        <div class="header-right">
+            <img src="~/img/login-icon.png">
+            @if (Context.Session.GetInt32("userId") == null)
+            {
+                <a class="option" href="@Url.Action("Authorization", "RaffleList")">Войти</a>
+            }
+            else
+            {            
+                <a class="option" href="@Url.Action("Authorization", "RaffleList")">@Context.Session.GetString("userEmail")</a>
+            }
+
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="main-content">
+            @RenderBody()
+        </div>
+
+
+
+    </div>
+    <footer>
+    </footer>
+
+
+
+</body>
+</html>

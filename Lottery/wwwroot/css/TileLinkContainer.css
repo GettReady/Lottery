@@ -1,0 +1,77 @@
+﻿.link-container {
+    position: relative;
+}
+
+    .link-container .link {
+        position: absolute;
+        left: 0;
+        top: 20px;
+        bottom: 0;
+        right: 0;
+    }
+
+    .link-container .inner-container {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        bottom: 0;       
+        
+        margin-bottom: 20px;
+        margin-left: 10px;        
+
+        width:85%;
+    }
+
+    .link-container .inner-link {
+        pointer-events: all;
+    }
+
+.buttons-container {
+    position: absolute;
+    bottom: 0;
+    
+    
+    pointer-events: all;
+    
+    width: auto;
+
+    right:0;
+
+    /*margin-left:50%*/
+
+}
+
+    .buttons-container .button1 {
+        display: inline-block;
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 0%;
+        color: white;
+        margin-right: 5px;
+        border-radius: 2px;
+
+    }
+        .buttons-container .button1:hover {
+            /*background-color: grey;*/
+        }
+
+.control-imgs {
+    display: block;
+    width: 30px;
+    filter: invert(72%) sepia(11%) saturate(0%) hue-rotate(135deg) brightness(89%) contrast(88%);
+    cursor: pointer;
+    /*margin: 110px auto;*/
+}
+
+    .control-imgs:hover {
+        /*display: block;*/
+        filter: invert(50%) sepia(50%) saturate(1315%) hue-rotate(317deg) brightness(85%) contrast(118%);
+        /*margin: 110px auto;*/
+    }
+
+.control-imgs-active {
+    display: block;
+    width: 30px;
+    filter: invert(50%) sepia(50%) saturate(1315%) hue-rotate(317deg) brightness(85%) contrast(118%);
+    cursor: pointer;    
+}

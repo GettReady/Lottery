@@ -1,0 +1,317 @@
+﻿body {
+}
+
+.btn-group {
+    margin-left: 80px;
+    margin-top: 50px;
+}
+
+    .btn-group .button {
+        background-color: /*#4CAF50*/ #E85659;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        float: left;
+        border-radius: 8px;
+        margin-right: 10px;
+        font-weight: bold;
+        display: block;
+    }
+
+.page-btn-group {
+    margin-left: 8%;
+    margin-top: 50px;
+}
+
+    .page-btn-group .button {
+        background-color: /*#4CAF50*/ #E85659;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        float: left;
+        border-radius: 8px;
+        margin-right: 10px;
+        font-weight: bold;
+        display: block;
+    }
+
+
+
+/*button.edit {
+    background-color: #269AE0;
+}
+    button.edit:hover {
+        background-color: #269AE0;
+    }
+button.finish {
+    background-color: #E0DD26;
+}
+    button.finish:hover {
+        background-color: #E0DD26;
+    }*/
+
+
+
+.s-btn-group {
+    margin-left: 80px;
+    margin-top: 80px;
+
+    display: table;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.s-button {
+    background-color: /*#4CAF50*/ #E85659;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    float: left;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-weight: bold;
+    /*display: block;*/
+    display: inline-block;
+}
+
+.edit-button {
+    background-color: /*#4CAF50*/ #E85659;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-weight: bold;
+    margin-left:0;
+    margin-top:40px;
+    display: block;
+}
+
+
+.button:hover {
+    background-color: #FF5E61;
+}
+
+.edit-h {
+    font-family: /*Gill Sans, sans-serif*/ Tahoma;
+    font-size: 150%;
+    /*padding-left: 140px;*/
+    /*padding-left: 80px;*/
+    text-align: left;
+    font-weight: bold;
+}
+
+.edit-tb {
+    padding: 5px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 20em;
+    height: 2em;
+    margin-bottom: 15px;
+    /*margin-left: 80px;*/
+    /*margin-left: 10em;*/
+}
+.edit-tb-large {
+    padding: 5px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 80%;
+    height: 5em;
+    margin-bottom: 15px;
+    /*margin-left: 80px;*/
+    max-width: 90%;
+    min-width: 60%;
+    min-height: 120px;
+    /*margin-left: 10em;*/
+}
+
+.edit-tb-participants {
+    padding: 5px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 80%;
+    height: 5em;
+    margin-bottom: 15px;
+    /*margin-left: 80px;*/
+    max-width: 90%;
+    min-width: 60%;
+    min-height: 120px;
+    font-size: 25px;
+    white-space: pre;
+    max-height: 540px;
+    /*margin-left: 10em;*/
+}
+
+.prize-tb {
+    padding: 10px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 20em;
+    height: 5%;
+    margin-bottom: 5px;
+}
+
+.date {
+    padding-left: 40px;
+    padding-left: var(--page-padding-left);
+    
+    
+    
+    padding-left: 8%;
+    
+    
+    
+    padding-right: var(--page-padding-left);
+
+
+    padding-bottom: 10px;
+    margin-top: 5px;
+    color: grey;
+    font-style: oblique;
+}
+
+.fdescription {
+    font-size: 150%;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-left: var(--page-padding-left);
+    
+    
+    padding-left: 8%;
+
+
+    padding-right: var(--page-padding-left);
+
+    padding-right: 8%;
+
+    margin-top: 0px;
+}
+
+.prize {
+    font-size: 150%;
+    padding-top: 0px;
+    /*padding-left: 40px;*/
+    /*padding-left: var(--page-padding-left);*/
+    /*padding-right: var(--page-padding-left);*/
+    margin-top: 0px;
+}
+
+table.PrizeWin {
+    table-layout: fixed;
+    width: 100%;
+    padding-bottom: 10px;
+    padding-left: 8%;
+    padding-right: 3%;
+    /*border-bottom: 1px solid;
+    border-color: darkgrey;*/
+}
+
+.td-raffle {
+    vertical-align: top;
+}
+
+.td-middle-line {
+    vertical-align: top;
+    border-right: 1px solid;
+}
+
+.tableh {
+    font-family: /*Gill Sans, sans-serif*/ Tahoma;
+    font-size: 200%;
+    /*padding-left: 140px;*/
+    /*padding-left:80px;*/
+    text-align: left;
+    font-weight: bold;
+}
+
+.keyh {
+    font-family: /*Gill Sans, sans-serif*/ Tahoma;
+    font-size: 200%;
+    padding-left: 8%;
+    /*padding-left:80px;*/
+    text-align: left;
+    font-weight: bold;
+}
+
+table.raffle-edit {
+    table-layout: fixed;
+    width: 100%;
+    padding-bottom: 10px;
+    /*margin-left:8%;*/
+    padding-left: 8%;
+    padding-right: 8%;
+    /*border-bottom: 1px solid;
+    border-color: darkgrey;*/
+}
+
+.td-edit {
+    vertical-align: top;
+}
+
+
+.cr-img {
+    display: block;
+    /*margin: 110px auto;*/
+    margin: 110px auto 8px auto;
+}
+
+/*.cr-img:hover {
+    display: block;
+    margin: 110px auto;    
+}*/
+
+.sign-in {
+    text-align: center;
+    display: block;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 12px;
+}
+
+.radio-private {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.save-changes-btn {
+    background-color: /*#4CAF50*/ #E85659;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-weight: bold;
+    display: none;
+    /*visibility: hidden;    */
+}
