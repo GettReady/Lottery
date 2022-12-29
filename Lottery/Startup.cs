@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Lottery.Data.Repository;
 using Lottery.Data.Interfaces;
-using Hangfire;
 
 namespace Lottery
 {
@@ -41,8 +40,6 @@ namespace Lottery
             {
                 mvcOtions.EnableEndpointRouting = false;
             });
-
-            services.AddHangfire(x => x.UseSqlServerStorage(ConfString.GetConnectionString("DefaultConnection")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRaffle raffle)
@@ -67,10 +64,7 @@ namespace Lottery
                 DbData.Initialize(context);
             }
 
-            Randomizer randomizer = new Randomizer(raffle);
-            app.UseHangfireDashboard();
-            app.UseHangfireServer();
-            RecurringJob.AddOrUpdate(() => randomizer.CheckRaffles(), "* * * * *");
+            Randomizer randomizer = new Randomizer(raffle);            
         }
     }
 }
