@@ -48,8 +48,6 @@ namespace Lottery.Data.Repository
             Raffle expiredRaffle = dbContext.Raffle.SingleOrDefault(c => c.Id == raffleId);
             expiredRaffle.Expired = true;
 
-            //List<int> winners = Randomizer.GetWinners(dbContext.UserRaffle.Where(c => c.RaffleId == raffleId && c.Status == "participant").ToList(), expiredRaffle.Places);
-
             List<int> winners = new List<int>();
             List<string> privateWinners = new List<string>();
             List<string> privateParticipants = new List<string>();
@@ -62,7 +60,6 @@ namespace Lottery.Data.Repository
                 {
                     participantsOrder.Add(i);
                 }
-                //List<int> privateParticipants = new List<int>();
                 winners = Randomizer.GetWinners(participantsOrder, expiredRaffle.Places);
             }
             else
@@ -157,7 +154,6 @@ namespace Lottery.Data.Repository
         {
             Raffle raffle = dbContext.Raffle.SingleOrDefault(c => c.Key == raffleKey);
             string newParticipants = string.Join('\n', participants.Split(devider));
-            //string newParticipants = string.Join('\n', participants.Split(devider).ToList().RemoveAll(c => c.Contains('\n') || c.Contains(' ') || c == "" || c == null));
             raffle.PrivateParticipants = newParticipants;
             dbContext.SaveChanges();                        
         }

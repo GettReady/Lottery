@@ -15,7 +15,5 @@ namespace Lottery.Data.Interfaces
         void SetPrizes(List<Prize> prizes);
 
         void EditPrizes(int raffleId, List<Prize> prizes);
-
-        //void SetWinner(int raffleId, int userId, int place);
     }
 }

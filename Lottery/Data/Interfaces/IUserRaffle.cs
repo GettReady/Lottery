@@ -15,7 +15,5 @@ namespace Lottery.Data.Interfaces
         void SetAuthor(int raffleId, int userId);
 
         void AddParticipant(int raffleId, int userId);
-
-        //void SetWinner(int raffleId, int userId);
     }
 }

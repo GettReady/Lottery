@@ -17,17 +17,15 @@ namespace Lottery.Controllers
         private readonly IUser User;
         private readonly IPrize Prize;
         private readonly IUserRaffle UserRaffle;
-        //private readonly IPrivateRafflesUserList PrivateRafflesUserList;
         static private readonly RafflesUserViewModel RafflesUser = new RafflesUserViewModel();
         static private readonly RafflePrizesViewModel RafflePrizes = new RafflePrizesViewModel();
 
-        public RaffleListController(IRaffle raffle, IUser user, IPrize prize, IUserRaffle userRaffle/*, IPrivateRafflesUserList privateRafflesUserList*/)
+        public RaffleListController(IRaffle raffle, IUser user, IPrize prize, IUserRaffle userRaffle)
         {
             Raffle = raffle;
             User = user;
             Prize = prize;
             UserRaffle = userRaffle;
-            //PrivateRafflesUserList = privateRafflesUserList;
         }
         
         public ViewResult ShowRaffles()
@@ -63,9 +61,7 @@ namespace Lottery.Controllers
 
         [HttpGet]
         public ViewResult Authorization()
-        {            
-            //RafflesUser.User = User.GetUser(HttpContext.Session.GetString("userEmail"));
-            //HttpContext.Session.SetInt32("userId", 20);
+        {
             return View();
         }
 
@@ -74,7 +70,7 @@ namespace Lottery.Controllers
         {
             //Авторизация здесь
 
-            var user = User.GetUser(/*HttpContext.Session.GetString("userEmail")*/userEmail);
+            var user = User.GetUser(userEmail);
             if(user!=null)
             {
                 RafflesUser.User = user;
@@ -82,16 +78,14 @@ namespace Lottery.Controllers
                 HttpContext.Session.SetString("userEmail", RafflesUser.User.Email);
 
                 SetRafflesUser(Raffle.AllRaffles);
-                //RafflesUser.Raffles = Raffle.AllRaffles;
                 ViewBag.Title = "Все розыгрыши";
                 return View("ShowRaffles", RafflesUser);
             }
             RafflesUser.User = null;
             HttpContext.Session.Remove("userId");
             HttpContext.Session.Remove("userEmail");
-            return View();
 
-            //HttpContext.Session.SetInt32("userId", 20);
+            return View();
         }
 
         public ViewResult CreateRaffle()
@@ -155,7 +149,7 @@ namespace Lottery.Controllers
                 rp.Raffle.Expired = false;
             }
             Raffle.EditRaffle(rp.Raffle);
-            Prize.EditPrizes(/*rp.Raffle.Id*/(int)HttpContext.Session.GetInt32("raffleId"), rp.Prizes);
+            Prize.EditPrizes((int)HttpContext.Session.GetInt32("raffleId"), rp.Prizes);
             SetRafflesUser(new List<Raffle>() { rp.Raffle });
             return View("ShowRafflePage", RafflesUser);
         }
@@ -171,21 +165,15 @@ namespace Lottery.Controllers
 
         public ViewResult DeleteRaffle()
         {
-            //Raffle.DeleteRaffle()
             Raffle.DeleteRaffle((int)HttpContext.Session.GetInt32("raffleId"));
             SetRafflesUser(Raffle.AllRaffles);
-
-
             return View("ShowRaffles", RafflesUser);
         }
 
         public ViewResult DeleteRaffleTile(int id)
         {
-            //Raffle.DeleteRaffle()
             Raffle.DeleteRaffle(id);
             SetRafflesUser(Raffle.AllRaffles);
-
-
             return View("ShowRaffles", RafflesUser);
         }
 
@@ -273,8 +261,6 @@ namespace Lottery.Controllers
                 RafflesUser.Prizes = Prize.AllPrizes;
             }
 
-            //RafflesUser.Raffles = Raffle.AllRaffles;
-
             if (usrRaffles.Count != 0)
             {
                 RafflesUser.UserRaffles = new int[usrRaffles.Count];
@@ -286,7 +272,5 @@ namespace Lottery.Controllers
 
             RafflesUser.Raffles = raffles;
         }
-
-
     }
 }

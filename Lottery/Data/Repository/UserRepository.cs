@@ -49,7 +49,6 @@ namespace Lottery.Data.Repository
             return false;
         }
 
-
         public IEnumerable<User> Users => dbContext.User;
     }
 }

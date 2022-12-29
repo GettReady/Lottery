@@ -21,9 +21,6 @@ namespace Lottery.Data.Repository
 
         public void EditPrizes(int raffleId, List<Prize> prizes)
         {
-
-            //dbContext.Prize.RemoveRange(dbContext.Prize.Where(c => c.RaffleId == raffleId));
-            //dbContext.Prize.AddRange(prizes);
             var edit = dbContext.Prize.Where(c => c.RaffleId == raffleId).ToList();
 
             for (int i = 0; i < prizes.Count(); ++i)
@@ -40,7 +37,6 @@ namespace Lottery.Data.Repository
             for(int i=0; i<prizes.Count(); ++i)
             {
                 prizes[i].Place = i + 1;
-                //prizes[i].RaffleId=
             }
             dbContext.Prize.AddRange(prizes);
             dbContext.SaveChanges();

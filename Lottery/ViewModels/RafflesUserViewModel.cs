@@ -14,6 +14,5 @@ namespace Lottery.ViewModels
         public IEnumerable<User> Winners { get; set; }
         public string[] PrivateWinners { get; set; }
         public int[] UserRaffles { get; set; }
-        //public string Participants { get; set; }
     }
 }

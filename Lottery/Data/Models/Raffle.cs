@@ -32,8 +32,6 @@ namespace Lottery.Data.Models
         public int AuthorId { get; set; }        
 
         public virtual List<UserRaffle> Participants { get; set; }
-        //public virtual PrivateRafflesUserList PrivateParticipants { get; set; }
         public virtual List<Prize> Prizes { get; set; }
-        //virtual public List<User> Winners { get; set; }
     }
 }

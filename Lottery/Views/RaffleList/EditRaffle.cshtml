@@ -8,30 +8,20 @@
                 <td class="td-edit">
                     <p class="edit-h">Заголовок</p>
                     <input asp-for="Raffle.Title" class="edit-tb" />
-                    @*<input type="text" class="edit-tb" name="" value="@Model.Raffle.Title" />*@
-
                     <p class="edit-h">Дата проведения</p>
                     <input type="date" asp-for="Raffle.ExpirationTime" class="edit-tb" />
-                    @*<input type="date" class="edit-tb" name="" value="@Model.Raffle.ExpirationTime.Date.ToString("yyyy-MM-dd")" />*@
                     <p><input type="time" asp-for="Time" asp-format="HH:mm" value="@Model.Raffle.ExpirationTime.TimeOfDay" class="edit-tb" /></p>
-                    @*<p><input type="time" class="edit-tb" name="" value="@Model.Raffle.ExpirationTime.TimeOfDay.ToString("hh\\:mm")" /></p>*@
-
                     <p class="edit-h">Краткое описание</p>
                     <textarea asp-for="Raffle.Description" class="edit-tb-large">@Model.Raffle.Description</textarea>
-                    @*<textarea class="edit-tb-large" name="Text1" cols="90" rows="10">@Model.Raffle.Description</textarea>*@
-
                     <p class="edit-h">Полное описание</p>
                     <textarea asp-for="Raffle.FullDescription" class="edit-tb-large">@Model.Raffle.FullDescription</textarea>
-                    @*<textarea class="edit-tb-large" name="Text2" cols="10" rows="10">@Model.Raffle.FullDescription</textarea>*@
                 </td>
-
                 <td class="td-edit">
                     <p class="edit-h">Количество призов</p>
                     <input type="number" class="edit-tb" name="" min="1" value="@Model.Raffle.Places" disabled />
                     @for (int i = 0; i < Model.Raffle.Places; ++i)
                     {
                         string item = "Prizes[" + i + "].PrizeDescription";
-                        @*<p><input type="text" class="edit-tb" name="@name" value="@Model.Prizes[i].PrizeDescription" /></p>*@
                         <p><input asp-for="Prizes[i].PrizeDescription" class="edit-tb" /></p>
                     }
                 </td>
@@ -39,7 +29,6 @@
             <tr>
                 <td>
                     <input type="submit" class="edit-button" value="Сохранить" />
-                    @*<input type="button" class="edit-button" value="Сохранить" onclick="location.href='@Url.Action("FinishRaffle", "RaffleList")'" />*@
                 </td>
             </tr>
         </table>    
@@ -52,19 +41,6 @@ else
         <table class="raffle-edit">
             <tr>
                 <td class="td-edit">
-                    @*<p class="edit-h">Заголовок</p>
-        <input type="text" class="edit-tb" name="" placeholder="Заголовок" />
-
-        <p class="edit-h">Дата проведения</p>
-        <input type="date" class="edit-tb" name="" placeholder="Дата" />
-        <p><input type="time" class="edit-tb" name="" placeholder="Дата" /></p>
-
-        <p class="edit-h">Краткое описание</p>
-        <textarea class="edit-tb-large" name="Text1" cols="90" rows="10" placeholder="Краткое описание"></textarea>
-
-        <p class="edit-h">Полное описание</p>
-        <textarea class="edit-tb-large" name="Text2" cols="10" rows="10" placeholder="Полное описание"></textarea>*@
-
                     <p class="edit-h">Заголовок</p>
                     <input asp-for="Raffle.Title" class="edit-tb" />
 
@@ -96,45 +72,9 @@ else
             </tr>
             <tr>
                 <td>
-                    @*<input type="button" class="edit-button" value="Сохранить" onclick="location.href='@Url.Action("FinishRaffle", "RaffleList")'" />*@
                     <input type="submit" class="edit-button" value="Добавить" />
                 </td>
             </tr>
         </table>
     </form>
 }
-
-
-
-
-@*<div class="btn-group">
-        <input type="button" class="button" value="Сохранить" onclick="location.href='@Url.Action("FinishRaffle", "RaffleList")'" />
-    </div>*@
-
-
-
-
-@*<p class="edith">Дата проведения</p>
-    <input type="date" class="edit-tb" name="" placeholder="Дата" />
-    <input type="time" class="edit-tb" name="" placeholder="Дата" />*@
-
-@*<p class="edith">Краткое описание</p>
-    <input type="text" class="edit-tb-large" name="" placeholder="Пароль" />*@
-
-@*<p class="edith">Краткое описание</p>
-    <textarea class="edit-tb-large" name="Text1" cols="90" rows="10" placeholder="Краткое описание"></textarea>*@
-
-@*<p class="edith">Полное описание</p>
-    <input type="text" class="edit-tb-large" name="" placeholder="Пароль" />*@
-
-@*<p class="edith">Полное описание</p>
-    <textarea class="edit-tb-large" name="Text2" cols="10" rows="10" placeholder="Полное описание"></textarea>*@
-
-@*<p class="edith">Количество призов</p>
-    <input type="number" class="edit-tb" name="" min="1" value="3" />*@
-@*@Context.Session.SetInt32("prizesNum", )*@
-
-@*@for (int i = 0; i < Context.Session.GetInt32("prizesNum"); ++i)
-    {
-
-    }*@

@@ -20,7 +20,6 @@ namespace Lottery.Data.Interfaces
 
         bool CheckKey(string key);
 
-        //public void DeleteUser(int id);        
         IEnumerable<User> Users { get; }
     }
 }

@@ -64,23 +64,10 @@ namespace Lottery
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 LotteryDbContext context = scope.ServiceProvider.GetRequiredService<LotteryDbContext>();
-                //context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
                 DbData.Initialize(context);
             }
 
-
-
-            //var iRaffle = app.ApplicationServices.GetService<IRaffle>();
-
-
-            //var iUserRaffle = app.ApplicationServices.GetService<IUserRaffle>();
-
-
-            //Randomizer randomizer = new Randomizer(iRaffle/*, iUserRaffle*/);
-
-
             Randomizer randomizer = new Randomizer(raffle);
-
             app.UseHangfireDashboard();
             app.UseHangfireServer();
             RecurringJob.AddOrUpdate(() => randomizer.CheckRaffles(), "* * * * *");

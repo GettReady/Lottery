@@ -14,62 +14,26 @@ namespace Lottery
     public class Randomizer
     {
         static Random rand = new Random();
+        private readonly IRaffle Raffle;        
 
-        private readonly IRaffle Raffle;
-        //private readonly IUserRaffle UserRaffle;
-
-        public Randomizer(IRaffle raffle/*, IUserRaffle userRaffle*/)
+        public Randomizer(IRaffle raffle)
         {
             Raffle = raffle;
-            //UserRaffle = userRaffle;
         }
 
         public void CheckRaffles()
         {
-            //LotteryDbContext dbContext = new LotteryDbContext();
-
-
-            //var activeRaffles = dbContext.Raffle.Where(c => c.Expired == false);
-
-
-            //var activeRaffles = Raffle.ActiveRaffles;
             List<Raffle> activeRaffles = Raffle.ActiveRaffles.ToList();
             foreach (Raffle raffle in activeRaffles)
             {
-                //using (StreamWriter writetext = new StreamWriter("write.txt", true))
-                //{
-                //    writetext.WriteLine(raffle.Id+"\n");
-                //}
-
                 if (raffle.ExpirationTime <= DateTime.Now)
                 {
-                    //using (StreamWriter writetext = new StreamWriter("write.txt", true))
-                    //{
-                    //    writetext.WriteLine(raffle.Id + "Raffle finished!\n");
-                    //}
-
                     Raffle.FinishRaffle(raffle.Id);
-
-
-                    //raffle.Expired = true;
-                    //List<int> winners = GetWinners(dbContext.UserRaffle.Where(c => c.RaffleId == raffle.Id && c.Status == "participant").ToList(), raffle.Places);
-                    //for (int i = 0; i < raffle.Places; ++i)
-                    //{
-                    //    dbContext.Prize.Where(c => c.RaffleId == raffle.Id && c.Place == i + 1).First().WinnerId = winners[i];
-                    //    dbContext.UserRaffle.Where(c => c.UserId == winners[i] && c.RaffleId == raffle.Id).First().Status = "winner";
-                    //}
-                    //dbContext.SaveChanges();
                 }
             }
-
-            //using (StreamWriter writetext = new StreamWriter("write.txt", true))
-            //{
-            //    writetext.WriteLine("end\n\n\n");
-            //}
-
         }
 
-        public static List<int> GetWinners(/*List<UserRaffle> participants*/List<int> participants, int places)
+        public static List<int> GetWinners(List<int> participants, int places)
         {
             List<int> winners = new List<int>();
             int winner;
@@ -79,7 +43,6 @@ namespace Lottery
                 if (participants.Count() != 0)
                 {
                     winner = rand.Next(participants.Count());
-                    //winners.Add(participants[winner].UserId);
                     winners.Add(participants[winner]);
                     participants.RemoveAt(winner);
                 }                

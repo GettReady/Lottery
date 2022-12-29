@@ -9,7 +9,6 @@ else
 }
 
 <p class="date">До @Model.Raffles.First().ExpirationTime.ToString("dd-MM-yyyy HH:mm")</p>
-@*<p class="fdescription"><b>@Model.Description</b></p>*@
 <p class="fdescription">@Model.Raffles.First().FullDescription</p>
 
 <table class="PrizeWin">
@@ -18,20 +17,13 @@ else
         {
         <td class="td-raffle">
             <p class="tableh">Участники</p>
-            <!--<form action="/RaffleList/SaveParticipants" method="post">-->
-            <!--asp-action="SaveParticipants" method="post">-->
             <textarea class="edit-tb-participants" name="participants" id="participants" oninput="ShowButton();">@Model.Raffles.First().PrivateParticipants</textarea>
-            <!--<input type="text" name="participants" />
-
-    <!--<textarea asp-for="participants" class="edit-tb-large"></textarea>-->
-
             <input type="submit" id="addButton" class="save-changes-btn" value="Сохранить" onclick="SendParticipants();" />
-            <!--</form>-->
         </td>
         }
         <td class="td-raffle">
             <p class="tableh">Призы</p>
-            @foreach (Prize prize in Model.Prizes)//onclick="location.href='@Url.Action("EditRaffle", "RaffleList")'"
+            @foreach (Prize prize in Model.Prizes)
             {
                 <p class="prize"><b>@prize.Place</b> - @prize.PrizeDescription</p>
             }
@@ -94,7 +86,7 @@ else
             }
             else if (!Model.Raffles.First().Expired && !Model.UserRaffles.Contains(Model.Raffles.First().Id))
             {
-                <input type="button" class="button" id="participate" value="Участвовать" onclick="Participate();"/><!--onclick="location.href='@Url.Action("Participate", "RaffleList")'" />-->
+                <input type="button" class="button" id="participate" value="Участвовать" onclick="Participate();"/>
             }
         }
     }
@@ -102,25 +94,23 @@ else
 
 <script>
     function ShowButton() {
-        //document.getElementById("addButton").style["visibility"] = "visible";        
         document.getElementById("addButton").style["display"] = "block";
     }
 
     function SendParticipants() {
-        //document.getElementById("addButton").style["visibility"] = "hidden";    
-        document.getElementById("addButton").style["display"] = "none";   
-        
+        document.getElementById("addButton").style["display"] = "none";        
         $input = $('#participants').val();
         $.ajax({
             url: "/RaffleList/SaveParticipants",            
             type: "POST",
             data: {participants: $input },
-            success: function () {
-            },
+            success:
+                function () {
+                },
             error:                 
                 function(jqXHR, textStatus, errorThrown) {
                     alert(jqXHR.status);
-            }            
+                }            
         });
     }
 
@@ -132,5 +122,4 @@ else
             data: {  }
         });
     }
-
 </script>
