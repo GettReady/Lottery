@@ -1,42 +1,39 @@
 ﻿@model RafflePrizesViewModel            
 @if (Model != null)
 {
-    <form asp-action="EditRaffle" method="post">
-        <h1 class="raffle-page">Редактирование</h1>
-        <table class="raffle-edit">
-            <tr>
-                <td class="td-edit">
-                    <p class="edit-h">Заголовок</p>
-                    <input asp-for="Raffle.Title" class="edit-tb" />
-                    <p class="edit-h">Дата проведения</p>
-                    <input type="date" asp-for="Raffle.ExpirationTime" class="edit-tb" />
-                    <p><input type="time" asp-for="Time" asp-format="HH:mm" value="@Model.Raffle.ExpirationTime.TimeOfDay" class="edit-tb" /></p>
-                    <p class="edit-h">Краткое описание</p>
-                    <textarea asp-for="Raffle.Description" class="edit-tb-large">@Model.Raffle.Description</textarea>
-                    <p class="edit-h">Полное описание</p>
-                    <textarea asp-for="Raffle.FullDescription" class="edit-tb-large">@Model.Raffle.FullDescription</textarea>
-                </td>
-                <td class="td-edit">
-                    <p class="edit-h">Количество призов</p>
-                    <input type="number" class="edit-tb" name="" min="1" value="@Model.Raffle.Places" disabled />
-                    @for (int i = 0; i < Model.Raffle.Places; ++i)
-                    {
-                        string item = "Prizes[" + i + "].PrizeDescription";
-                        <p><input asp-for="Prizes[i].PrizeDescription" class="edit-tb" /></p>
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" class="edit-button" value="Сохранить" />
-                </td>
-            </tr>
-        </table>    
-    </form>
+<form class="raffle-edit" asp-action="EditRaffle" method="post">
+    <h1 class="raffle-header">Редактирование</h1>
+    <div class="edit-fields">
+        <div class="field">
+            <p class="edit-h">Заголовок</p>
+            <input asp-for="Raffle.Title" class="edit-tb" />
+
+            <p class="edit-h">Дата проведения</p>
+            <input type="date" asp-for="Raffle.ExpirationTime" class="edit-tb" />
+            <p><input type="time" asp-for="Time" asp-format="HH:mm" value="@Model.Raffle.ExpirationTime.TimeOfDay" class="edit-tb" /></p>
+
+            <p class="edit-h">Краткое описание</p>
+            <textarea asp-for="Raffle.Description" class="edit-tb-large">@Model.Raffle.Description</textarea>
+
+            <p class="edit-h">Полное описание</p>
+            <textarea asp-for="Raffle.FullDescription" class="edit-tb-large">@Model.Raffle.FullDescription</textarea>
+        </div>
+        <div class="field">
+            <p class="edit-h">Количество призов</p>
+            <input type="number" class="edit-tb" name="" min="1" value="@Model.Raffle.Places" disabled />
+            @for (int i = 0; i < Model.Raffle.Places; ++i)
+            {
+                string item = "Prizes[" + i + "].PrizeDescription";
+                <p><input asp-for="Prizes[i].PrizeDescription" class="edit-tb" /></p>
+            }
+        </div>
+    </div>    
+    <input type="submit" class="edit-button" value="Сохранить" />
+</form>
 }
 else
 {
-    <form asp-action="CreateRaffle" method="post">
+    <form class="raffle-edit" asp-action="CreateRaffle" method="post">
         <h1 class="raffle-page">Создание</h1>
         <table class="raffle-edit">
             <tr>

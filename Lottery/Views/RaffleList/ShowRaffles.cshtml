@@ -15,39 +15,41 @@
             <div class="link-container">
                 <div class="raffle" asp-controller="RaffleList" asp-action="ShowRafflePage" asp-route-id="@raffle.Id">
                     <a class="link" asp-controller="RaffleList" asp-action="ShowRafflePage" asp-route-id="@raffle.Id"></a>
-                    <h3>@raffle.Title</h3>
-                    @if (raffle.Expired)
-                    {
-                        <div class="sdescription"><i>Завершен</i></div>
-                    }
-                    else
-                    {
-                        <div class="sdescription"><i>@raffle.ExpirationTime.ToString("dd.MM.yyyy HH:mm")</i></div> <!-- Время -->
-                    }
-
-                    @if (raffle.Description != null)
-                    {
-                        @if (raffle.Description.Length > 128)
+                    <div>
+                        <h3>@raffle.Title</h3>
+                        @if (raffle.Expired)
                         {
-                            <div class="first">@raffle.Description.Substring(0, 128)...</div> <!-- Краткое описание -->
-
+                            <div class="sdescription"><i>Завершен</i></div>
                         }
                         else
                         {
-                            <div class="first">@raffle.Description</div>
+                            <div class="sdescription"><i>@raffle.ExpirationTime.ToString("dd.MM.yyyy HH:mm")</i></div> <!-- Время -->
                         }
-                    }
 
-                    <div class="sdescription">Количество призов - @raffle.Places:</div> <!-- Призы/места -->
-                    @for (int i = 0; i < 3 && i < raffle.Places; ++i)
-                    {
-                        <div class="sprizes">@Model.Prizes.Where(c => c.RaffleId == raffle.Id).ToArray()[i].Place - @Model.Prizes.Where(c => c.RaffleId == raffle.Id).ToArray()[i].PrizeDescription</div>
-                    }
-                    @if (raffle.Places > 3)
-                    {
-                        <div class="sprizes">...</div>
-                    }
+                        @if (raffle.Description != null)
+                        {
+                            @if (raffle.Description.Length > 128)
+                            {
+                                <div class="first">@raffle.Description.Substring(0, 128)...</div> <!-- Краткое описание -->
 
+                            }
+                            else
+                            {
+                                <div class="first">@raffle.Description</div>
+                            }
+                        }
+
+                        <div class="sdescription">Количество призов - @raffle.Places:</div> <!-- Призы/места -->
+                        @for (int i = 0; i < 3 && i < raffle.Places; ++i)
+                        {
+                            <div class="sprizes">@Model.Prizes.Where(c => c.RaffleId == raffle.Id).ToArray()[i].Place - @Model.Prizes.Where(c => c.RaffleId == raffle.Id).ToArray()[i].PrizeDescription</div>
+                        }
+                        @if (raffle.Places > 3)
+                        {
+                            <div class="sprizes">...</div>
+                        }
+
+                    </div>
                     <!--Кнопки-->
                     @if (Model.User != null && Context.Session.GetInt32("userId") != null)
                     {
