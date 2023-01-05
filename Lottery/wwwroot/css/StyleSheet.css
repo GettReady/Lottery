@@ -82,6 +82,8 @@ h1.expired {
     width: 100%;
     z-index: 10;
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
 }
 
     .header a {
@@ -102,6 +104,10 @@ h1.expired {
         color: white;
         padding: 15px;
         display: block;
+        flex-shrink: 0;
+
+        position: absolute;
+        left:0;
     }
 
     .header .logo:hover {
@@ -114,9 +120,9 @@ h1.expired {
 
     .header .options {
         /*margin-left: 20%;*/
-        margin-left: 20px;
-        width: 500px;
-        display: block;
+        /*margin-left: 20px;*/
+        width: 780px;
+        display: block;        
     }
 
     .header a.option {
@@ -150,13 +156,29 @@ h1.expired {
 
 .header-right {
     float: right;
+    flex-shrink: 0;
+
+    position: absolute;
+    right: 0;
+}
+
+#logo-container {
+    position: relative;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+#profile-container {
+    position: relative;
+    width: 340px;
+    flex-shrink: 0;
 }
 
 .main-content {
-    background-color: white;    
-    margin: 0 auto;    
-    padding-top: 0%;    
-    box-shadow: 0 0.45em 0.5em #000;    
+    background-color: white;
+    margin: 0 auto;
+    padding-top: 0%;
+    box-shadow: 0 0.45em 0.5em #000;
     min-height: 100vh;
     width: 1000px;
     border: 1px solid transparent;
@@ -283,7 +305,30 @@ h1.expired {
     font-weight: bold;
 }
 
+@media (max-width: 1280px) {
+    .header .options {
+        /*margin-left: 20%;*/
+        /*margin-left: 20px;*/
+        /*width: 1000px;*/
+        flex-grow: 1;
+    }
+}
+
 @media (max-width: 1000px) {
+    #logo-container {
+        display: none;
+    }
+
+    #tab {
+        width: 50%;
+    }
+
+    #profile-container {
+        width: 50%;
+        /*display: block;*/
+        flex-wrap: nowrap;
+    }
+
     .main-content {
         width: 100%;
     }

@@ -11,14 +11,11 @@
 
 </head>
 <body>
-    <!--<header>
-
-    </header>
-        -->
-
-    <div class="header">
-        <a href="@Url.Action("ShowRaffles", "RaffleList")" class="logo"><i> ЛОТЕРЕЯ  </i></a>
-        <div href="#default" class="options">
+    <header class="header">
+        <div id="logo-container">
+            <a id="logo" href="@Url.Action("ShowRaffles", "RaffleList")" class="logo"><i> ЛОТЕРЕЯ  </i></a>
+        </div>
+        <div id="tabs" href="#default" class="options">
             @if (ViewBag.Title != null)
             {
                 @if (ViewBag.Title.Contains("Все"))
@@ -71,32 +68,27 @@
             }
         </div>
 
-        <div class="header-right">
-            <img src="~/img/login-icon.png">
-            @if (Context.Session.GetInt32("userId") == null)
-            {
-                <a class="option" href="@Url.Action("Authorization", "RaffleList")">Войти</a>
-            }
-            else
-            {            
-                <a class="option" href="@Url.Action("Authorization", "RaffleList")">@Context.Session.GetString("userEmail")</a>
-            }
+        <div id="profile-container">
+            <div id="profile" class="header-right">
+                <img src="~/img/login-icon.png">
+                @if (Context.Session.GetInt32("userId") == null)
+                {
+                    <a class="option" href="@Url.Action("Authorization", "RaffleList")">Войти</a>
+                }
+                else
+                {
+                    <a class="option" href="@Url.Action("Authorization", "RaffleList")">@Context.Session.GetString("userEmail")</a>
+                }
 
+            </div>
         </div>
-    </div>
-
+    </header>
     <div class="main">
         <div class="main-content">
             @RenderBody()
         </div>
-
-
-
     </div>
     <footer>
     </footer>
-
-
-
 </body>
 </html>
