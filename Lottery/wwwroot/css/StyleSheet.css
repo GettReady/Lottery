@@ -84,6 +84,7 @@ h1.expired {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
     .header a {
@@ -102,7 +103,7 @@ h1.expired {
         font-size: 40px;
         font-weight: bold;
         color: white;
-        padding: 15px;
+        padding: 13px;
         display: block;
         flex-shrink: 0;
 
@@ -122,7 +123,8 @@ h1.expired {
         /*margin-left: 20%;*/
         /*margin-left: 20px;*/
         width: 780px;
-        display: block;        
+        height: 50px;
+        display: block;
     }
 
     .header a.option {
@@ -165,12 +167,14 @@ h1.expired {
 #logo-container {
     position: relative;
     width: 200px;
+    height: 50px;
     flex-shrink: 0;
 }
 
 #profile-container {
     position: relative;
     width: 340px;
+    height: 50px;
     flex-shrink: 0;
 }
 
@@ -319,7 +323,7 @@ h1.expired {
         display: none;
     }
 
-    #tab {
+    #tabs {
         width: 50%;
     }
 
@@ -329,12 +333,34 @@ h1.expired {
         flex-wrap: nowrap;
     }
 
+    .header-right img {
+        display: none;
+    }
+
     .main-content {
         width: 100%;
     }
 
     .tiles {
         padding: 10px 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    .header {
+        padding: 10px 10px;
+    }
+
+    #logo-container {
+        display: block;
+    }
+
+    #tabs {
+        display: none;
+    }
+
+    #profile-container {
+        display: none;
     }
 }
 
