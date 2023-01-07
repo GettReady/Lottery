@@ -250,7 +250,8 @@ table.PrizeWin {
 
 .cr-img {
     display: block;
-    margin: 110px auto 8px auto;
+    /*margin: 110px auto 8px auto;*/
+    margin-top: 10px;
 }
 
 .sign-in {

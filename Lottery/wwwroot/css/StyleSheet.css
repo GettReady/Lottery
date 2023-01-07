@@ -198,7 +198,7 @@ h1.expired {
     background-color: #F5F5F5;
     border: 2px solid black;
     padding: 10px;
-    border-radius: 6.5%;
+    border-radius: 25px;
     border-color: #858585;
     /*width: 2fr;*/
     height: 350px;
@@ -216,6 +216,7 @@ h1.expired {
 
     .raffle:hover {
         border-color: white;
+        border-color: transparent;
         color: #B03D3F;
         color: #4A4A4A;
         color: #421718;
@@ -226,6 +227,18 @@ h1.expired {
 
     .raffle h3 {
         overflow: hidden;
+    }
+
+#add-raffle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid rgba(150,20,20,0.4);
+}
+
+    #add-raffle:hover {
+        background-color: rgba(200,20,20,0.1);
     }
 
 .tiles {
@@ -303,10 +316,11 @@ h1.expired {
     color: indianred;
     display: block;
     width: 80px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     font-family: Gill Sans, sans-serif;
     font-style: italic;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 @media (max-width: 1280px) {

@@ -41,8 +41,8 @@ namespace Lottery
                 mvcOtions.EnableEndpointRouting = false;
             });
         }
-
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRaffle raffle)
+        
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -50,8 +50,7 @@ namespace Lottery
             }
             app.UseStatusCodePages();
             app.UseSession();
-            app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            app.UseStaticFiles();            
             app.UseMvc(routes =>
                 {
                     routes.MapRoute(name: "default", template: "{controller=RaffleList}/{action=ShowRaffles}");
@@ -62,9 +61,8 @@ namespace Lottery
             {
                 LotteryDbContext context = scope.ServiceProvider.GetRequiredService<LotteryDbContext>();
                 DbData.Initialize(context);
+                Randomizer randomizer = new Randomizer(scope.ServiceProvider.GetRequiredService<IRaffle>());
             }
-
-            Randomizer randomizer = new Randomizer(raffle);            
         }
     }
 }

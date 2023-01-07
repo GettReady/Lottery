@@ -1,11 +1,11 @@
 ﻿@model RafflesUserViewModel
-<ul class="tiles">
+<div class="tiles">
     @{
         if (Model.User != null)
         {
             if (Context.Session.GetInt32("userId") != null)
             {
-                <li class="raffle" style="cursor: pointer;" onclick="location.href='@Url.Action("CreateRaffle", "RaffleList")'"> <img class="cr-img" src="~/img/create-new.png">  <div class="add-new-raffle">Добавить</div> </li>
+                <div id="add-raffle" class="raffle" style="cursor: pointer;" onclick="location.href='@Url.Action("CreateRaffle", "RaffleList")'"> <img class="cr-img" src="~/img/create-new.png">  <div class="add-new-raffle">Добавить</div> </div>
             }
         }
 
@@ -82,7 +82,7 @@
             </div>
         }
     }
-</ul>
+</div>
 
 <script>
     function Participate(id) {
