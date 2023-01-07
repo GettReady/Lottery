@@ -156,10 +156,24 @@ h1.expired {
         color: white;
     }
 
+#options-icon {
+    width: 40px;    
+    border-radius: 8px;
+    padding: 7px 4px;
+    display: none;
+    border: 1px solid transparent;
+}
+
+    #options-icon:hover {
+        cursor: pointer;
+        box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
+        /*border-color: #E88879;*/
+        border-color: white;
+    }
+
 .header-right {
     float: right;
     flex-shrink: 0;
-
     position: absolute;
     right: 0;
 }
@@ -363,6 +377,15 @@ h1.expired {
 @media (max-width: 700px) {
     .header {
         padding: 10px 10px;
+        justify-content: start;
+    }
+
+    #logo {
+        padding: 12px 4px;
+    }
+
+    #options-icon {
+        display: block;
     }
 
     #logo-container {

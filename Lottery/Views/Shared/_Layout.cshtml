@@ -12,50 +12,19 @@
 </head>
 <body>
     <header class="header">
+        <img id="options-icon" src="~/img/options.png"/>
         <div id="logo-container">
             <a id="logo" href="@Url.Action("ShowRaffles", "RaffleList")" class="logo"><i> ЛОТЕРЕЯ  </i></a>
         </div>
         <div id="tabs" href="#default" class="options">
             @if (ViewBag.Title != null)
             {
-                @if (ViewBag.Title.Contains("Все"))
+                <a class="@(ViewBag.Title.Contains("Все") ? "optionActive" : "option")" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
+                <a class="@(ViewBag.Title.Contains("Активные") ? "optionActive" : "option")" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
+                @if (Context.Session.GetInt32("userId") != null)
                 {
-                    <a class="optionActive" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
-                    <a class="option" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
-                    if (Context.Session.GetInt32("userId") != null)
-                    {
-                        <a class="option" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
-                    }
-
+                    <a class="@(ViewBag.Title.Contains("Мои") ? "optionActive" : "option")" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
                 }
-                else if (ViewBag.Title.Contains("Активные"))
-                {
-                    <a class="option" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
-                    <a class="optionActive" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
-                    if (Context.Session.GetInt32("userId") != null)
-                    {
-                        <a class="option" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
-                    }
-                }
-                else if (ViewBag.Title.Contains("Мои"))
-                {
-                    <a class="option" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
-                    <a class="option" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
-                    if (Context.Session.GetInt32("userId") != null)
-                    {
-                        <a class="optionActive" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
-                    }
-                }
-                else 
-                {
-                    <a class="option" href="@Url.Action("ShowRaffles", "RaffleList")"><i>Все</i></a>
-                    <a class="option" href="@Url.Action("ShowActiveRaffles", "RaffleList")"><i>Активные</i></a>
-                    if (Context.Session.GetInt32("userId") != null)
-                    {
-                        <a class="option" href="@Url.Action("ShowUserRaffles", "RaffleList")"><i>Мои</i></a>
-                    }
-                }
-
             }
             else
             {
@@ -79,7 +48,6 @@
                 {
                     <a class="option" href="@Url.Action("Authorization", "RaffleList")">@Context.Session.GetString("userEmail")</a>
                 }
-
             </div>
         </div>
     </header>
