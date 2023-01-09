@@ -14,10 +14,6 @@
     position: relative;
     pointer-events: none;
     z-index: 1;
-    /*bottom: 0;*/
-    /*margin-bottom: 20px;*/
-    /*margin-left: 10px;*/
-    /*width:85%;*/
 }
 
 .inner-link {
@@ -29,7 +25,8 @@
     bottom: 0;
     pointer-events: all;
     width: auto;
-    right:0;
+    right: 0;
+    z-index: 1;
 }
 
     .buttons-container .button1 {

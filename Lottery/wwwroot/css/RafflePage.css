@@ -114,14 +114,12 @@
 .edit-tb-large {
     padding: 5px;
     border: 2px solid #ccc;
-    -webkit-border-radius: 5px;
     border-radius: 5px;
-    width: 80%;
-    height: 5em;
     margin-bottom: 15px;
-    max-width: 90%;
-    min-width: 60%;
+    width: 100%;
+    resize: vertical;
     min-height: 120px;
+    box-sizing: border-box;
 }
 
 .edit-tb-participants {
@@ -166,15 +164,9 @@
     padding-top: 10px;
     padding-left: 40px;
     padding-left: var(--page-padding-left);
-    
-    
     padding-left: 8%;
-
-
     padding-right: var(--page-padding-left);
-
     padding-right: 8%;
-
     margin-top: 0px;
 }
 
@@ -220,9 +212,13 @@ table.PrizeWin {
     display: flex;
     flex-direction: column;
     align-content: start;
-    width: 90%;
-    margin: 0 auto;
+    padding: 0 50px;    
 }
+
+    .raffle-edit h1 {
+        padding-bottom: 8px;
+        border-bottom: 3px solid rgba(0,0,0,0.4);
+    }
 
 .raffle-header {
     padding-left: 0;
@@ -232,16 +228,20 @@ table.PrizeWin {
 .edit-fields {
     display: flex;
     flex-direction: row;
+    gap: 50px;
 }
 
 .field {
     display: flex;
     flex-direction: column;
-}
-
-.field input {
     width: 100%;
 }
+
+    .field input {
+        width: 100%;
+        box-sizing: border-box;
+        height: 40px;
+    }
 
 .td-edit {
     vertical-align: top;
@@ -250,7 +250,6 @@ table.PrizeWin {
 
 .cr-img {
     display: block;
-    /*margin: 110px auto 8px auto;*/
     margin-top: 10px;
 }
 
@@ -286,7 +285,6 @@ table.PrizeWin {
 
 @media (max-width: 1000px) {
     .raffle-edit {
-        width: 100%;
-
+        /*width: 100%;*/
     }
 }

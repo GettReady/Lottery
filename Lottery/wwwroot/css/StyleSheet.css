@@ -17,15 +17,11 @@ ul {
 }
 
 h1 {
-    padding-top: 20px;
-    padding-left: 40px;
-    padding-left: var(--page-padding-left);
-    padding-right: var(--page-padding-left);
-    margin-top: 0px;
+    margin-top: 20px;
     margin-bottom: 0px;
-    font-size: 300%;
+    font-size: 45px;
     color: #424242;
-    font-family: Tahoma;
+    font-family: Tahoma;    
 }
 
 h3 {
@@ -72,15 +68,11 @@ h1.expired {
 
 .header {
     overflow: hidden;
-    background-color: #FF1F26;
-    background-color: var(--red-color);
     padding: 20px 10px;
     box-shadow: 0 0em 0.4em #732A2C;
-    /*position: relative;*/
-    position: sticky;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 4;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -106,9 +98,6 @@ h1.expired {
         padding: 13px;
         display: block;
         flex-shrink: 0;
-
-        position: absolute;
-        left:0;
     }
 
     .header .logo:hover {
@@ -120,11 +109,8 @@ h1.expired {
     }
 
     .header .options {
-        /*margin-left: 20%;*/
-        /*margin-left: 20px;*/
         width: 780px;
         height: 50px;
-        display: block;
     }
 
     .header a.option {
@@ -156,18 +142,38 @@ h1.expired {
         color: white;
     }
 
+#header-background {    
+    background-color: var(--red-color);
+    position: absolute;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    box-sizing: border-box;
+    height: 90px;
+}
+
+#screen-plug {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(80,80,80,0.5);
+    z-index: 3;
+}
+
 #options-icon {
-    width: 40px;    
+    width: 40px;
     border-radius: 8px;
     padding: 7px 4px;
     display: none;
     border: 1px solid transparent;
+    transition: all 0.2s ease-out;
 }
 
     #options-icon:hover {
         cursor: pointer;
         box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
-        /*border-color: #E88879;*/
         border-color: white;
     }
 
@@ -182,7 +188,7 @@ h1.expired {
     position: relative;
     width: 200px;
     height: 50px;
-    flex-shrink: 0;
+    flex-shrink: 0;    
 }
 
 #profile-container {
@@ -214,15 +220,10 @@ h1.expired {
     padding: 10px;
     border-radius: 25px;
     border-color: #858585;
-    /*width: 2fr;*/
     height: 350px;
-    /*float: left;*/
     margin-top: 20px;
     width: 100%;
     box-sizing: border-box;
-    /*display: inline-block;*/
-    /*vertical-align: top;*/
-    /*text-decoration: none;*/
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -320,7 +321,6 @@ h1.expired {
         border-color: cornflowerblue;
     }
 
-
 .raffles-buttons {
 
     pointer-events: none;
@@ -330,7 +330,6 @@ h1.expired {
     color: indianred;
     display: block;
     width: 80px;
-    /*margin: 0 auto;*/
     font-family: Gill Sans, sans-serif;
     font-style: italic;
     font-weight: bold;
@@ -339,14 +338,23 @@ h1.expired {
 
 @media (max-width: 1280px) {
     .header .options {
-        /*margin-left: 20%;*/
-        /*margin-left: 20px;*/
-        /*width: 1000px;*/
         flex-grow: 1;
     }
 }
 
 @media (max-width: 1000px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .header {
+        padding: 10px 10px;    
+    }
+
+    #header-background {
+        height: 70px;
+    }
+
     #logo-container {
         display: none;
     }
@@ -357,7 +365,6 @@ h1.expired {
 
     #profile-container {
         width: 50%;
-        /*display: block;*/
         flex-wrap: nowrap;
     }
 
@@ -366,17 +373,20 @@ h1.expired {
     }
 
     .main-content {
-        width: 100%;
+        width: 100%;        
     }
 
     .tiles {
         padding: 10px 10px;
     }
+
+    h1 {
+        font-size: 30px;
+    }
 }
 
-@media (max-width: 700px) {
-    .header {
-        padding: 10px 10px;
+@media (max-width: 800px) {
+    .header {        
         justify-content: start;
     }
 
@@ -389,26 +399,23 @@ h1.expired {
     }
 
     #logo-container {
-        display: block;
+        display: flex;
+        flex-direction: row;
     }
 
-    #tabs {
-        display: none;
-    }
-
-    #profile-container {
+    .stealthy {
         display: none;
     }
 }
 
 @media screen and (max-width: 500px) {
     .header a {
-    float: none;
-    display: block;
-    text-align: left;
-}
+        float: none;
+        display: block;
+        text-align: left;
+    }
 
-.header-right {
-    float: none;
-}
+    .header-right {
+        float: none;
+    }
 }
